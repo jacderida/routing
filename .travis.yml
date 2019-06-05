@@ -16,12 +16,12 @@ cache:
   cargo: true
 before_script:
   - set x;
-    output=$(git log "fleming..$TRAVIS_PULL_REQUEST_BRANCH" --oneline | grep -iE 'fixup|wip')
+    output=$(git log "fleming..$TRAVIS_PULL_REQUEST_BRANCH" --oneline | grep -iE 'fixup|wip');
     if [[ $? != 1 ]]; then
-        echo "Found fixup or WIP commit(s):"
-        echo "$output"
-        exit 1
-    fi
+        echo "Found fixup or WIP commit(s):";
+        echo "$output";
+        exit 1;
+    fi;
   - curl -sSL https://github.com/maidsafe/QA/raw/master/travis/cargo_install.sh > cargo_install.sh
   - bash cargo_install.sh cargo-prune;
   - rustup component add rustfmt clippy
